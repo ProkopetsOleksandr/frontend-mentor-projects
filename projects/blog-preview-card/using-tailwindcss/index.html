@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png" />
+    <title>Frontend Mentor | Blog preview card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-[hsl(47,88%,63%)] font-['Figtree']">
+    <main class="flex items-center justify-center min-h-screen">
+      <div
+        class="w-[320px] h-[440px] bg-white p-5 rounded-2xl shadow-[7px_7px_0px_2px_black] border-1 flex flex-col gap-3">
+        <div class="flex flex-col gap-4">
+          <img class="rounded-lg" src="../assets/images/illustration-article.svg" alt="img" />
+          <div>
+            <span class="bg-[hsl(47,88%,63%)] px-2 py-1 font-extrabold rounded text-xs">Learning</span>
+          </div>
+          <p class="text-sm">Published 21 Dec 2023</p>
+          <h1 class="text-xl font-extrabold">HTML & CSS foundation</h1>
+        </div>
+        <div class="grow-1">
+          <p class="font-medium text-sm text-[hsl(0,0%,42%)]">
+            These languages are the backbone of every website, defining structure, content, and presentation.
+          </p>
+        </div>
+        <div class="flex gap-2 items-center">
+          <img class="size-8" src="../assets/images/image-avatar.webp" alt="avatar" />
+          <p class="font-extrabold">Greg Hooper</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
