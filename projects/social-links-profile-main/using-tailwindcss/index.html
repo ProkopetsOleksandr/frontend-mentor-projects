@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png" />
+    <title>Frontend Mentor | QR code component</title>
+    <link href="../assets/fonts/Inter-VariableFont_slnt,wght.ttf" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-green: hsl(75, 94%, 57%);
+        --font-inter: 'Inter', sans-serif;
+        --color-gray-700: hsl(0, 0%, 20%);
+        --color-gray-800: hsl(0, 0%, 12%);
+        --color-gray-900: hsl(0, 0%, 8%);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 font-inter">
+    <main class="flex items-center justify-center min-h-screen">
+      <div class="w-[300px] h-[460px] p-4 bg-gray-800 rounded-lg flex flex-col items-center gap-2">
+        <img class="size-20 rounded-full" src="../assets/images/avatar-jessica.jpeg" alt="avatar" />
+        <div class="text-white text-2xl font-normal">Jessica Randall</div>
+        <div class="text-green text-xs font-semibold mb-3">London, United Kingdom</div>
+        <div class="text-white/50 text-sm mb-2">"Front-end developer and avid reader."</div>
+        <ul class="w-full space-y-3">
+          <li
+            class="bg-gray-700 text-center text-white/80 text-sm font-semibold py-2 rounded-lg cursor-pointer hover:bg-green hover:text-gray-900">
+            GitHub
+          </li>
+          <li
+            class="bg-gray-700 text-center text-white/80 text-sm font-semibold py-2 rounded-lg cursor-pointer hover:bg-green hover:text-gray-900">
+            Frontend Mentor
+          </li>
+          <li
+            class="bg-gray-700 text-center text-white/80 text-sm font-semibold py-2 rounded-lg cursor-pointer hover:bg-green hover:text-gray-900">
+            LinkedIn
+          </li>
+          <li
+            class="bg-gray-700 text-center text-white/80 text-sm font-semibold py-2 rounded-lg cursor-pointer hover:bg-green hover:text-gray-900">
+            Twitter
+          </li>
+          <li
+            class="bg-gray-700 text-center text-white/80 text-sm font-semibold py-2 rounded-lg cursor-pointer hover:bg-green hover:text-gray-900">
+            Instagram
+          </li>
+        </ul>
+      </div>
+    </main>
+  </body>
+</html>
