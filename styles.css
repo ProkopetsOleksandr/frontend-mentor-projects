@@ -1,0 +1,62 @@
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    background-color: #dfebeb;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-grow: 1;
+  }
+
+  main ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  main ul li {
+    background-color: white;
+    padding: 1rem 2rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer {
+    max-width: 900px;
+    text-align: center;
+  }
+}
+
+@layer components {
+  .level {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .beginner-level {
+    background-color: #406eee;
+  }
+
+  .intermediate-level {
+    background-color: #f1f7b5;
+  }
+
+  .advanced-level {
+    background-color: #fd8a8a;
+  }
+}
