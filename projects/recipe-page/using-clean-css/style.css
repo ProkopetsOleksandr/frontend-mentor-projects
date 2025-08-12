@@ -1,0 +1,166 @@
+@layer theme {
+  :root {
+    --color-white: hsl(0, 0%, 100%);
+
+    --color-stone-100: hsl(30, 54%, 90%);
+    --color-stone-150: hsl(30, 18%, 87%);
+    --color-stone-600: hsl(30, 10%, 34%);
+    --color-stone-900: hsl(24, 5%, 18%);
+
+    --color-brown-800: hsl(14, 45%, 36%);
+
+    --color-rose-800: hsl(332, 51%, 32%);
+    --color-rose-50: hsl(330, 100%, 98%);
+
+    --font-young-serif: 'Young Serif', serif;
+    --font-outfit: 'Outfit', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    background: var(--color-white);
+    font-family: var(--font-young-serif);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+  }
+
+  main {
+    min-height: 100vh;
+  }
+
+  p,
+  ul {
+    font-family: var(--font-outfit);
+    color: var(--color-stone-600);
+  }
+
+  section:not(:last-child) {
+    border-bottom: 1px solid var(--color-stone-100);
+    margin-bottom: 2rem;
+  }
+
+  section h2 {
+    color: var(--color-brown-800);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  section ul {
+    padding: 1rem;
+    padding-top: 0;
+  }
+
+  section ul li {
+    padding-left: 1rem;
+  }
+
+  section ul li::marker {
+    color: var(--color-brown-800);
+    font-weight: bold;
+  }
+
+  section ul li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-outfit);
+    margin-top: 1rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem 0;
+    text-align: left;
+  }
+
+  th {
+    padding-left: 1.5rem;
+  }
+
+  tr:not(:last-child) {
+    border-bottom: 1px solid #e5e5e5; /* тонкая разделительная линия */
+  }
+
+  th {
+    font-weight: normal; /* обычный вес шрифта для заголовков */
+    color: hsl(30, 10%, 34%); /* как у "Stone 600" в твоей палитре */
+  }
+
+  td {
+    font-weight: bold;
+    color: var(--color-brown-800);
+  }
+}
+
+@layer components {
+  .recipe-image {
+    width: 100%;
+  }
+
+  .recipe-content {
+    padding: 2rem;
+  }
+
+  .recipe-name {
+    font-weight: 400;
+    color: var(--color-stone-900);
+    margin-bottom: 1.5rem;
+  }
+
+  .recipe-description {
+    color: var(--color-stone-900);
+    margin-bottom: 1.5rem;
+  }
+
+  .preparation-details {
+    padding: 1rem 2rem;
+    background-color: var(--color-rose-50);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .preparation-details h2 {
+    color: var(--color-rose-800);
+    margin-bottom: 1rem;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: var(--font-outfit);
+  }
+
+  .preparation-details ul {
+    padding-left: 1rem;
+  }
+
+  .preparation-details ul li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .instructions ul {
+    list-style-type: decimal;
+  }
+}
+
+@media (min-width: 376px) {
+  /* стили, которые будут применяться при экранах шире 375px */
+  main {
+    padding: 2rem;
+  }
+
+  .recipe-content {
+    padding: 0;
+  }
+
+  .recipe-image {
+    border-radius: 2rem;
+  }
+}
