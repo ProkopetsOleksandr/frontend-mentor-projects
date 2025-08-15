@@ -1,0 +1,133 @@
+@layer theme {
+  :root {
+    --color-primary-green-500: hsl(158, 36%, 37%);
+    --color-primary-green-700: hsl(158, 42%, 18%);
+
+    --color-neutral-black: hsl(212, 21%, 14%);
+    --color-neutral-grey: hsl(228, 12%, 48%);
+    --color-neutral-cream: hsl(30, 38%, 92%);
+    --color-neutral-white: hsl(0, 0%, 100%);
+
+    --font-fraunces: 'Fraunces', serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--color-neutral-cream);
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+    color: var(--color-neutral-grey);
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@layer components {
+  .card {
+    width: 350px;
+    background-color: var(--color-neutral-white);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+
+  .card-header img {
+    width: 100%;
+
+    &.desktop {
+      display: none;
+    }
+  }
+
+  .card-body {
+    padding: 1.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .card-body .product-tag {
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-size: 14px;
+  }
+
+  .card-body h1 {
+    color: var(--color-neutral-black);
+    font-family: var(--font-fraunces);
+    font-weight: 700;
+  }
+
+  .card-body .price {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .card-body .price .current {
+    font-family: var(--font-fraunces);
+    font-size: 1.75rem;
+    color: var(--color-primary-green-500);
+  }
+
+  .card-body .price .previous {
+    text-decoration: line-through;
+    font-size: 12px;
+  }
+
+  .card-body button {
+    background: var(--color-primary-green-500);
+    color: var(--color-neutral-white);
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--color-primary-green-700);
+    }
+  }
+
+  /* 40rm = sm in tailwind css */
+  @media screen and (width >= 40rem) {
+    .card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 600px;
+    }
+
+    .card-header img {
+      &.mobile {
+        display: none;
+      }
+
+      &.desktop {
+        display: block;
+      }
+    }
+
+    .card-body {
+      gap: 1.75rem;
+    }
+  }
+}
