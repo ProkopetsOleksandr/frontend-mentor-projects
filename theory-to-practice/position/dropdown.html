@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      main {
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 1fr min(42rem, 100%) 1fr;
+      }
+
+      main > * {
+        grid-column: 2;
+      }
+
+      .dropdown {
+        display: inline-block;
+      }
+
+      .dropdown button {
+        padding: 0.5rem 1rem;
+        border: none;
+        background-color: hsl(0, 0%, 90%);
+        cursor: pointer;
+      }
+
+      .dropdown ul {
+        display: none;
+        position: absolute;
+        background-color: hsl(0, 0%, 82%);
+        min-width: 10rem;
+      }
+
+      .dropdown ul li {
+        padding: 0.5rem;
+      }
+
+      .dropdown ul li a {
+        color: black;
+        cursor: pointer;
+      }
+
+      .dropdown ul > li + li {
+        border-top: 1px solid black;
+      }
+
+      .dropdown:hover button {
+        background-color: hsl(0, 0%, 70%);
+      }
+
+      .dropdown:hover ul {
+        display: block;
+      }
+
+      .dropdown ul li:hover a {
+        color: hsl(0, 16%, 64%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <div class="dropdown">
+          <button>Наведи на меня</button>
+          <ul>
+            <li><a href="">Главная</a></li>
+            <li><a href="">О нас</a></li>
+            <li><a href="">Еще один элемент</a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque qui, fugit dolorem debitis excepturi delectus error
+          quia praesentium fugiat quo molestias consectetur? Rem est libero a quisquam? Neque saepe aspernatur ab accusantium ut.
+          Perspiciatis enim alias, quae, vel, fugiat mollitia perferendis facere voluptatibus accusamus natus provident id
+          expedita laborum? Dicta quo quibusdam omnis inventore enim, dolore nihil fugit mollitia pariatur quod, eos, molestiae
+          illo. Ex quia, laudantium eveniet suscipit ipsam modi. Neque accusantium rem odio voluptatibus culpa eligendi voluptates
+          dolor cupiditate eaque, et exercitationem nemo mollitia quas illo, consequuntur saepe dolorem non aperiam iusto
+          recusandae, quam quia inventore. Minus modi rerum eum harum quos dignissimos at, architecto explicabo ullam libero
+          laboriosam, obcaecati praesentium aliquam ea ducimus id corrupti corporis quae quod, iusto aliquid. Quis recusandae fuga
+          ea molestias commodi magni reiciendis, ex optio excepturi tempora dolor ab, eius ratione, itaque voluptatum repellat
+          earum atque quia exercitationem distinctio. Omnis velit sapiente facilis, excepturi magnam eum reiciendis pariatur
+          assumenda commodi reprehenderit nobis doloremque ea explicabo! Quod eius consequatur dignissimos fugiat autem debitis
+          sed at corrupti provident corporis, saepe dolor sequi ullam cum perferendis, voluptatibus voluptates blanditiis est
+          veritatis iusto totam, sunt atque ea. Sunt incidunt mollitia repudiandae, dignissimos culpa cumque eaque. Quia iusto
+          beatae ut praesentium neque iure deserunt obcaecati iste quod temporibus magni pariatur provident, earum eveniet, est
+          error ad animi sunt sint. Quam beatae quaerat nesciunt. Praesentium repellendus corrupti rerum eum, eaque nesciunt quae
+          cupiditate iste dicta velit sed cumque sint, distinctio magnam at libero blanditiis, ab laborum maiores? Quo molestias a
+          aspernatur ab rem beatae, sunt cum, possimus voluptatum amet reiciendis vitae magnam non? Atque, sunt eum. Tempora
+          officia aspernatur, voluptatem odit fugit velit quisquam magni accusantium repellat, ipsa, facilis rem fuga repellendus
+          fugiat maxime? Pariatur quia iure doloribus tenetur amet, labore quae esse enim eum maxime fuga id officia harum
+          perferendis voluptatum voluptatem molestiae ex sint earum, maiores tempore! Non delectus numquam, fuga voluptatibus,
+          provident, adipisci consequuntur vel iusto earum consectetur id itaque rerum quae voluptatum dignissimos labore iure.
+          Facere odit ipsam atque ex quos necessitatibus ipsa, possimus libero assumenda explicabo incidunt, veniam magni fugit
+          quaerat expedita aspernatur obcaecati rem! Laboriosam sequi ducimus rerum laudantium ea aspernatur nemo, dolores nisi.
+          Ipsa illo vel labore perferendis tenetur nisi, alias inventore, quaerat magnam nesciunt facere, quasi dolor voluptas
+          earum laudantium ad dolore? Beatae placeat officia harum facere nostrum, aspernatur qui consequatur distinctio
+          assumenda, temporibus quae officiis fugiat eligendi suscipit enim delectus tempora molestias eveniet neque repellat
+          deleniti aliquid. Ipsam vel, ullam sapiente mollitia obcaecati magnam assumenda voluptatum iure distinctio repudiandae.
+          Exercitationem itaque pariatur ipsum provident facere. Quae quas dolorum iste obcaecati voluptatem corporis perferendis
+          saepe dolore mollitia, maxime sequi, natus cupiditate, eos exercitationem. At error nemo similique dolore molestiae
+          impedit iure a vitae ipsam sunt quis, commodi perferendis illo consequuntur quidem ipsum, optio, officiis blanditiis? Et
+          officiis dolores ipsa laboriosam est id odio soluta, iste commodi vel voluptates velit recusandae sunt ab nemo dicta
+          impedit voluptatibus nostrum in qui doloremque amet error blanditiis. Accusantium unde officiis ratione distinctio hic
+          laudantium.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
