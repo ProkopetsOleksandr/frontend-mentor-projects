@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" />
+    <title>Playground</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      header {
+        background-color: #262626;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .navbar {
+        min-height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      .navbar > a {
+        font-size: 2rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 60px;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+
+      .hamburger .bar {
+        display: block;
+        height: 3px;
+        width: 25px;
+        margin: 5px auto;
+        background-color: white;
+        transition: all 0.3s ease-in-out;
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: -100%;
+          left: 0;
+          background-color: #262626;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          transition: 0.3s;
+          gap: 0;
+        }
+
+        .nav-item {
+          margin: 14px 0;
+        }
+
+        .nav-menu.active {
+          top: 72px;
+        }
+      }
+    </style>
+  </head>
+  <body data-theme="light">
+    <header>
+      <nav class="navbar">
+        <a href="">DEV</a>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#">Home</a></li>
+          <li class="nav-item"><a href="#">About</a></li>
+          <li class="nav-item"><a href="#">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <script>
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('.nav-menu');
+
+      hamburger.addEventListener('click', function () {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      navLinks.forEach(link =>
+        link.addEventListener('click', function () {
+          hamburger.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        }),
+      );
+    </script>
+  </body>
+</html>
