@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --main-header-height: 56px; /* запасной дефолт, JS перезапишет */
+        --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+        --duration: 240ms;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      }
+
+      .main-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #111;
+        color: #fff;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid #222;
+      }
+
+      .sub-header {
+        position: sticky;
+        top: var(--main-header-height);
+        z-index: 900;
+        background: #2b2b2b;
+        color: #fff;
+        padding: 0.75rem 1.25rem;
+        border-bottom: 1px solid #3a3a3a;
+
+        /* Анимация появления/скрытия */
+        transform: translateY(0);
+        opacity: 1;
+        transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
+        will-change: transform, opacity;
+      }
+
+      .sub-header.is-hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Чуть «прилипшая» тень при скролле контента за subheader (опционально)
+     Можно улучшить через IntersectionObserver, но для краткости — простая тень. */
+      .sub-header::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 1px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+        pointer-events: none;
+      }
+
+      /* Уважение к prefers-reduced-motion */
+      @media (prefers-reduced-motion: reduce) {
+        .sub-header {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header" id="mainHeader">Main Header</header>
+
+    <header class="sub-header" id="subHeader">Section Navigation</header>
+
+    <main>
+      <section style="height: 200vh; padding: 1rem">
+        <h1>Content</h1>
+        <p>Scroll down…</p>
+      </section>
+    </main>
+
+    <script>
+      // ===== Config =====
+      const HIDE_THRESHOLD = 120; // сколько нужно проскроллить вниз, чтобы начать скрывать
+      const REVEAL_DELTA = 10; // на сколько пикселей нужно прокрутить вверх, чтобы показать
+      const SNAP_AT_TOP = true; // всегда показывать на самом верху
+
+      // ===== Elements =====
+      const mainHeader = document.getElementById('mainHeader');
+      const subHeader = document.getElementById('subHeader');
+
+      // Устанавливаем отступ для sub-header исходя из высоты main-header
+      function updateOffsets() {
+        const h = mainHeader.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--main-header-height', `${h}px`);
+      }
+      updateOffsets();
+      window.addEventListener('resize', updateOffsets);
+
+      // ===== Scroll logic (rAF, без дрожания) =====
+      let lastY = window.pageYOffset || document.documentElement.scrollTop;
+      let ticking = false;
+      let anchorDownY = 0; // точка, от которой считаем порог для скрытия
+      let anchorUpY = 0; // точка, от которой считаем дельту для показа
+      let hidden = false;
+
+      function onScroll() {
+        const y = window.pageYOffset || document.documentElement.scrollTop;
+        const dy = y - lastY;
+
+        // На самом верху — всегда показываем
+        if (SNAP_AT_TOP && y <= 0) {
+          show();
+          resetAnchors(y);
+          lastY = y;
+          return;
+        }
+
+        if (dy > 0) {
+          // Скролл вниз
+          // Сбрасываем якорь для "вверх"
+          anchorUpY = y;
+          // Если уже прошли HIDE_THRESHOLD от последнего "якоря вниз" — скрыть
+          if (y - anchorDownY > HIDE_THRESHOLD && !hidden) hide();
+        } else if (dy < 0) {
+          // Скролл вверх
+          // Сбрасываем якорь для "вниз"
+          if (hidden && anchorUpY - y >= REVEAL_DELTA) show();
+        }
+
+        lastY = y;
+      }
+
+      function resetAnchors(y) {
+        anchorDownY = y;
+        anchorUpY = y;
+      }
+
+      function hide() {
+        hidden = true;
+        subHeader.classList.add('is-hidden');
+        // Обновляем якорь вниз в момент скрытия, чтобы следующий цикл требовал снова HIDE_THRESHOLD
+        anchorDownY = window.pageYOffset || document.documentElement.scrollTop;
+      }
+
+      function show() {
+        hidden = false;
+        subHeader.classList.remove('is-hidden');
+        // Обновляем «вверх» якорь
+        anchorUpY = window.pageYOffset || document.documentElement.scrollTop;
+      }
+
+      document.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              onScroll();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        },
+        { passive: true },
+      );
+    </script>
+  </body>
+</html>
