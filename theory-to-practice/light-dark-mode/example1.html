@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/reset.css" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      })();
+
+      function setTheme(value) {
+        console.log(value);
+        localStorage.setItem('theme', value);
+        location.reload();
+      }
+    </script>
+    <style>
+      html {
+        color-scheme: light dark;
+        color: light-dark(green, gray);
+      }
+
+      html[data-theme='light'] {
+        color-scheme: light;
+      }
+
+      html[data-theme='dark'] {
+        color-scheme: dark;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        min-height: 70px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 0 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Logo</header>
+    <main>
+      <div>
+        <label for="light">Light:</label>
+        <button onclick="setTheme('light')">set light</button>
+      </div>
+      <div>
+        <label for="dark">Dark:</label>
+        <button onclick="setTheme('dark')">set dark</button>
+      </div>
+    </main>
+  </body>
+</html>

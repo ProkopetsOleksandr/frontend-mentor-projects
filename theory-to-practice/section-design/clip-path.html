@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/reset.css" />
+    <style>
+      body {
+        /* background: linear-gradient(to right, #ef8e38, #108dc7); */
+        background: #333;
+      }
+
+      header {
+        min-height: 70px;
+        background: #fff;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      main {
+        border: 1px solid black;
+      }
+
+      section h1 {
+        text-align: center;
+      }
+
+      .one {
+        min-height: 80vh;
+        background: #ef8e38;
+        padding: 1rem;
+        clip-path: inset(0 50% 0 0);
+        transition: clip-path 1s ease;
+      }
+
+      .one:hover {
+        clip-path: inset(0 0 0 0);
+      }
+
+      .two {
+        min-height: 60vh;
+        background: #108dc7;
+        padding: 1rem;
+        clip-path: polygon(0 0, 0 100%, 100% calc(100% - 3vw), 100% 0);
+        margin-bottom: -5vw;
+      }
+
+      .three {
+        min-height: 80vh;
+        background: #38ef84;
+        padding: 1rem;
+        padding-top: 5vw;
+      }
+
+      .three .wrapper {
+        margin-top: 10rem;
+        display: grid;
+        place-content: center;
+      }
+
+      .three .wrapper .card-wrapper {
+        --border: 1px solid #333;
+        border-radius: 20px;
+      }
+
+      .three .wrapper .card {
+        width: 600px;
+        height: 300px;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        border-radius: 20px;
+        clip-path: circle(100px at top right);
+        transition: clip-path 0.5s ease;
+      }
+
+      .three .wrapper .card:hover {
+        clip-path: circle(150% at top right);
+      }
+
+      .three .wrapper .card h2 {
+        margin-bottom: 1rem;
+      }
+
+      .section-4 {
+        min-height: 40vh;
+        background: #3853ef;
+        display: grid;
+        place-content: center;
+      }
+
+      .section-4 .wrapper {
+        position: relative;
+      }
+
+      .section-4 button {
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      .section-4 .wrapper .tooltip {
+        --width: 15px;
+
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%) translateY(-110%);
+        width: 300px;
+        background-color: #333;
+        padding: 10px 10px calc(var(--width) + 10px) 10px;
+        color: white;
+
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - var(--width)),
+          60% calc(100% - var(--width)),
+          50% 100%,
+          40% calc(100% - var(--width)),
+          0 calc(100% - var(--width))
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+
+      .section-4 .wrapper:has(button:hover) .tooltip {
+        opacity: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>Logo</div>
+    </header>
+    <main>
+      <section class="one">
+        <h1>Section one</h1>
+      </section>
+      <section class="two"><h1>Section two</h1></section>
+      <section class="three">
+        <h1>Section three</h1>
+        <div class="wrapper">
+          <div class="card-wrapper">
+            <div class="card">
+              <h2>my card</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, aliquid earum doloremque molestiae doloribus
+                dolore distinctio delectus dolor. Adipisci necessitatibus voluptates non ab ut reiciendis accusantium quasi
+                exercitationem quae dignissimos odio excepturi commodi sequi placeat architecto, magni nam eligendi eius culpa
+                aliquam magnam? Ea sequi eaque possimus veniam architecto. Unde in dolores placeat a! Earum qui error magnam
+                ducimus sit iste blanditiis sapiente minus nihil vero officia repellendus nisi a vitae dolor atque dicta, facilis
+                dolore repudiandae! Officia praesentium minima placeat aliquid? Enim ipsa, ab officiis quaerat ex quis ipsum ipsam
+                aperiam ratione sapiente consequatur nobis ad veritatis inventore consectetur!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-4">
+        <div class="wrapper">
+          <button>Hover me</button>
+          <div class="tooltip">
+            This is tooltip This is tooltip This is tooltip This is tooltip This is tooltip This is tooltip This is tooltip
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
