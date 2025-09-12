@@ -1,0 +1,64 @@
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'sidebar main';
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 60px 1fr;
+  gap: 5px;
+  transition: grid-template-columns 0.5s ease;
+}
+
+.wrapper:has(nav.open) {
+  grid-template-columns: 200px 1fr;
+}
+
+.wrapper > * {
+  border: 1px solid black;
+}
+
+.wrapper > header {
+  grid-area: header;
+}
+
+.wrapper > nav {
+  grid-area: sidebar;
+}
+
+.wrapper > main {
+  grid-area: main;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+header .hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+header .hamburger .bar {
+  width: 30px;
+  height: 2px;
+  background-color: black;
+}
+
+.sidebar {
+  padding: 10px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+main {
+  padding: 1rem;
+}
