@@ -13,10 +13,15 @@
         }
       })();
 
-      function setTheme(value) {
-        console.log(value);
-        localStorage.setItem('theme', value);
-        location.reload();
+      function setTheme(t) {
+        if (localStorage.getItem('theme') === t) {
+          return;
+        }
+
+        const vt = document.startViewTransition(() => {
+          document.documentElement.dataset.theme = t;
+          localStorage.setItem('theme', t);
+        });
       }
     </script>
     <style>
@@ -33,17 +38,24 @@
         color-scheme: dark;
       }
 
-      header {
-        display: flex;
-        align-items: center;
-        min-height: 70px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        padding: 0 1rem;
+      ::view-transition-new(root) {
+        clip-path: circle(200px at center);
+        animation: scale 0.8s;
+      }
+
+      ::view-transition-old(root) {
+        animation: none;
+        z-index: -1;
+      }
+
+      @keyframes scale {
+        to {
+          clip-path: circle(100vmax at center);
+        }
       }
     </style>
   </head>
   <body>
-    <header>Logo</header>
     <main>
       <div>
         <label for="light">Light:</label>

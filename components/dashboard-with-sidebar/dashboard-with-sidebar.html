@@ -6,68 +6,159 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../theory-to-practice/assets/reset.css" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" />
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
         <div>PerfectLife</div>
       </header>
-      <nav class="sidebar open">
+      <nav id="sidebar" class="">
         <ul role="navigation">
-          <li>Dashboard</li>
-          <li>Goals</li>
-          <li>Tasks</li>
+          <li>
+            <button id="toggleMenu" onclick="toggleMenu(this)">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" viewBox="0 -960 960 960" fill="#E8EAED">
+                <path d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z" />
+              </svg>
+            </button>
+          </li>
+          <li class="active">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#E8EAED">
+                <path
+                  d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z" />
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#E8EAED">
+                <path
+                  d="M480-390Zm-132-53 55 37 77-39 77 39 53-35-40-79H386l-38 77ZM209-160h541L646-369l-83 55-83-41-83 41-85-56-103 210ZM80-80l234-475q10-20 29.5-32.5T386-600h54v-280h280l-40 80 40 80H520v120h50q23 0 42 12t30 32L880-80H80Z" />
+              </svg>
+              <span>Goals</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#E8EAED">
+                <path
+                  d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z" />
+              </svg>
+              <span>Tasks</span>
+            </a>
+          </li>
+          <li>
+            <button onclick="toggleDropdown(this)" class="dropdown-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#E8EAED">
+                <path
+                  d="M560-320h80v-80h80v-80h-80v-80h-80v80h-80v80h80v80ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Z" />
+              </svg>
+              <span>Create</span>
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#E8EAED">
+                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+              </svg>
+            </button>
+            <ul class="sub-menu">
+              <li><a href="#">Folder</a></li>
+              <li><a href="#">Document</a></li>
+              <li><a href="#">Project</a></li>
+            </ul>
+          </li>
+          <li>
+            <button onclick="toggleDropdown(this)" class="dropdown-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#E8EAED">
+                <path
+                  d="M560-320h80v-80h80v-80h-80v-80h-80v80h-80v80h80v80ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Z" />
+              </svg>
+              <span>Create</span>
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#E8EAED">
+                <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+              </svg>
+            </button>
+            <ul class="sub-menu">
+              <li><a href="#">Folder</a></li>
+              <li><a href="#">Document</a></li>
+              <li><a href="#">Project</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <main>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quam, laudantium quo aliquid deleniti veniam eum beatae
-          fugit non optio labore nam repellat id officia tenetur numquam deserunt suscipit nemo nulla consequatur perspiciatis at?
-          Delectus obcaecati, alias perferendis a officia nisi quidem veniam, adipisci expedita, impedit excepturi esse rerum vel
-          consectetur ipsum repudiandae quam officiis qui perspiciatis distinctio ullam nobis? Rem deserunt, animi maxime,
-          molestias doloribus ipsum, voluptate fuga harum quas hic quos! Odit ut expedita consequatur nostrum explicabo fugit,
-          tempora aperiam, iste dolorum in est eaque sequi dolores quisquam minima. Natus repellendus nemo beatae reprehenderit
-          cum molestias rerum explicabo eligendi sequi corporis, neque voluptatum praesentium placeat laudantium illum perferendis
-          fugit consectetur et totam harum vel dignissimos adipisci. Ipsum numquam ipsam repudiandae eveniet, corrupti error eum
-          vero ad nesciunt totam a obcaecati? Reprehenderit fuga non beatae soluta inventore nemo iure optio vero dolorum! Earum,
-          deserunt. Atque in nobis culpa illo dolorum et a commodi placeat laborum natus. Et consequuntur laboriosam, tempore
-          dicta earum illum repellat odio animi architecto non optio nostrum, alias vel veniam, accusamus distinctio praesentium
-          omnis facere. Asperiores, ducimus dicta repudiandae quod laudantium, amet delectus eum pariatur praesentium laboriosam
-          illum earum exercitationem iste, saepe maxime architecto similique doloremque aut? Vitae expedita facilis voluptas
-          magnam accusamus repellendus, sunt tempora tempore dolorem blanditiis natus velit vel excepturi quis. Tenetur cumque
-          nostrum est totam consectetur excepturi voluptatem soluta odit doloremque, optio natus quidem eveniet, sit illo. Itaque
-          numquam aliquid saepe, eveniet inventore temporibus ex ipsum quisquam consectetur earum. Fugit expedita, officiis ipsam
-          ab mollitia, numquam beatae temporibus repellendus tempore eaque itaque? Nihil quisquam vero, recusandae non voluptate
-          dignissimos numquam iste debitis ab laborum deserunt harum, itaque, similique distinctio eius ad? Error, corrupti illo
-          harum nisi eum quaerat dolorem assumenda eaque quam cupiditate temporibus at laboriosam numquam tempore ut pariatur et
-          porro nostrum aliquid? Saepe itaque placeat accusantium molestiae excepturi aut voluptates quae rem dignissimos rerum
-          illum architecto praesentium omnis magnam, expedita ipsam ratione iste inventore nulla quam quibusdam deserunt amet
-          aspernatur minus? In perferendis corrupti beatae numquam laudantium eius qui perspiciatis nihil placeat excepturi animi
-          cum molestias ad aperiam aliquid odio optio minima accusamus voluptas, laborum dolorum? Ad, repellat incidunt adipisci
-          illo at minus inventore? Obcaecati quisquam at laudantium impedit sit odio maxime ad sapiente, accusantium, minima
-          architecto quam? Distinctio eos quod, voluptate magnam voluptatem, perferendis ex atque aliquam amet impedit
-          perspiciatis ipsam enim quis iste. Eaque accusantium dicta laudantium blanditiis officia voluptas atque quidem dolorum
-          amet, impedit expedita non quam, ad et vitae totam possimus qui accusamus distinctio, nobis quod praesentium eveniet.
-          Ratione et magni cupiditate delectus dolore quisquam, quas corrupti, ut facilis rerum reprehenderit reiciendis optio sit
-          harum soluta doloribus eligendi. Labore nemo similique necessitatibus repudiandae, minus exercitationem ipsa natus rem.
-          Id modi quisquam mollitia quibusdam placeat nesciunt perferendis. Aliquam, ad beatae quod laudantium enim sunt
-          voluptates pariatur minus autem harum fugit ex debitis? Eos eligendi minima perferendis quas doloribus sapiente cumque
-          quos vitae? Expedita velit quod debitis natus animi cumque aspernatur ea, sunt ratione amet, laborum voluptatum aperiam!
-        </p>
+        <section>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quam, laudantium quo aliquid deleniti veniam eum beatae
+            fugit non optio labore nam repellat id officia tenetur numquam deserunt suscipit nemo nulla consequatur perspiciatis
+            at? Delectus obcaecati, alias perferendis a officia nisi quidem veniam, adipisci expedita, impedit excepturi esse
+            rerum vel consectetur ipsum repudiandae quam officiis qui perspiciatis distinctio ullam nobis? Rem deserunt, animi
+            maxime, molestias doloribus ipsum, voluptate fuga harum quas hic quos! Odit ut expedita consequatur nostrum explicabo
+            fugit, tempora aperiam, iste dolorum in est eaque sequi dolores quisquam minima. Natus repellendus nemo beatae
+            reprehenderit cum molestias rerum explicabo eligendi sequi corporis, neque voluptatum praesentium placeat laudantium
+            illum perferendis fugit consectetur et totam harum vel dignissimos adipisci. Ipsum numquam ipsam repudiandae eveniet,
+            corrupti error eum vero ad nesciunt totam a obcaecati? Reprehenderit fuga non beatae soluta inventore nemo iure optio
+            vero dolorum! Earum, deserunt. Atque in nobis culpa illo dolorum et a commodi placeat laborum natus. Et consequuntur
+            laboriosam, tempore dicta earum illum repellat odio animi architecto non optio nostrum, alias vel veniam, accusamus
+            distinctio praesentium omnis facere. Asperiores, ducimus dicta repudiandae quod laudantium, amet delectus eum pariatur
+            praesentium laboriosam illum earum exercitationem iste, saepe maxime architecto similique doloremque aut? Vitae
+            expedita facilis voluptas magnam accusamus repellendus, sunt tempora tempore dolorem blanditiis natus velit vel
+            excepturi quis. Tenetur cumque nostrum est totam consectetur excepturi voluptatem soluta odit doloremque, optio natus
+            quidem eveniet, sit illo. Itaque numquam aliquid saepe, eveniet inventore temporibus ex ipsum quisquam consectetur
+            earum. Fugit expedita, officiis ipsam ab mollitia, numquam beatae temporibus repellendus tempore eaque itaque? Nihil
+            quisquam vero, recusandae non voluptate dignissimos numquam iste debitis ab laborum deserunt harum, itaque, similique
+            distinctio eius ad? Error, corrupti illo harum nisi eum quaerat dolorem assumenda eaque quam cupiditate temporibus at
+            laboriosam numquam tempore ut pariatur et porro nostrum aliquid? Saepe itaque placeat accusantium molestiae excepturi
+            aut voluptates quae rem dignissimos rerum illum architecto praesentium omnis magnam, expedita ipsam ratione iste
+            inventore nulla quam quibusdam deserunt amet aspernatur minus? In perferendis corrupti beatae numquam laudantium eius
+            qui perspiciatis nihil placeat excepturi animi cum molestias ad aperiam aliquid odio optio minima accusamus voluptas,
+            laborum dolorum? Ad, repellat incidunt adipisci illo at minus inventore? Obcaecati quisquam at laudantium impedit sit
+            odio maxime ad sapiente, accusantium, minima architecto quam? Distinctio eos quod, voluptate magnam voluptatem,
+            perferendis ex atque aliquam amet impedit perspiciatis ipsam enim quis iste. Eaque accusantium dicta laudantium
+            blanditiis officia voluptas atque quidem dolorum amet, impedit expedita non quam, ad et vitae totam possimus qui
+            accusamus distinctio, nobis quod praesentium eveniet. Ratione et magni cupiditate delectus dolore quisquam, quas
+            corrupti, ut facilis rerum reprehenderit reiciendis optio sit harum soluta doloribus eligendi. Labore nemo similique
+            necessitatibus repudiandae, minus exercitationem ipsa natus rem. Id modi quisquam mollitia quibusdam placeat nesciunt
+            perferendis. Aliquam, ad beatae quod laudantium enim sunt voluptates pariatur minus autem harum fugit ex debitis? Eos
+            eligendi minima perferendis quas doloribus sapiente cumque quos vitae? Expedita velit quod debitis natus animi cumque
+            aspernatur ea, sunt ratione amet, laborum voluptatum aperiam!
+          </p>
+        </section>
       </main>
     </div>
 
     <script>
-      const hambuger = document.querySelector('.hamburger');
-      const sidebar = document.querySelector('nav.sidebar');
-      hambuger.addEventListener('click', function () {
+      // const toggleMenu = document.getElementById('toggleMenu');
+      // const sidebar = document.querySelector('nav.sidebar');
+      // toggleMenu.addEventListener('click', function () {
+      //   sidebar.classList.toggle('open');
+      // });
+
+      function toggleMenu(toggleBtn) {
+        const sidebar = document.getElementById('sidebar');
         sidebar.classList.toggle('open');
-      });
+        toggleBtn.classList.toggle('open');
+      }
+
+      function toggleDropdown(button) {
+        button.classList.toggle('rotate');
+        button.nextElementSibling.classList.toggle('show');
+      }
+
+      // const dropdowns = document.querySelectorAll('.dropdown-btn');
+      // dropdowns.forEach(element => {
+      //   element.addEventListener('click', function () {
+      //     dropdowns.forEach(el => {
+      //       if (el !== element) {
+      //         el.nextElementSibling.classList.remove('show');
+      //       }
+      //     });
+
+      //     const subMenu = element.nextElementSibling;
+      //     subMenu.classList.toggle('show');
+      //   });
+      // });
     </script>
   </body>
 </html>
