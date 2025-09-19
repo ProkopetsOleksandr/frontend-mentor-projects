@@ -7,12 +7,89 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2 id="content" contenteditable="true" data-text="Random text">Random text</h2>
+    <div id="wrapper">
+      <div id="form">
+        <input id="userInput" type="text" />
+        <button onclick="start()">Start</button>
+      </div>
+      <div>Format: MM.dd.yyyy hh:mm:ss</div>
+    </div>
+    <h2 id="content" contenteditable="true" data-text=""></h2>
   </body>
   <script>
     const editor = document.getElementById('content');
-    editor.addEventListener('input', function (event) {
-      editor.dataset.text = event.target.innerText;
-    });
+    const wrapper = document.getElementById('wrapper');
+
+    function start() {
+      const value = document.getElementById('userInput').value;
+
+      userInput.classList.remove('invalid');
+
+      if (isValidDateTime(value)) {
+        wrapper.style.display = 'none';
+        runInterval(value);
+      } else {
+        userInput.classList.add('invalid');
+      }
+    }
+
+    function runInterval(dateStr) {
+      //'9.19.2025 12:29:16'
+      var countDownDate = new Date(dateStr).getTime();
+
+      // Update the count down every 1 second
+      var x = setInterval(function () {
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        let time = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
+        editor.innerHTML = time;
+        editor.dataset.text = time;
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          editor.innerHTML = 'EXPIRED';
+        }
+      }, 1000);
+    }
+
+    function isValidDateTime(input) {
+      // Проверяем общий формат: 2 цифры.2 цифры.4 цифры пробел 2:2:2
+      const regex = /^(\d{2})\.(\d{2})\.(\d{4}) (\d{2}):(\d{2}):(\d{2})$/;
+      const match = input.match(regex);
+
+      if (!match) return false;
+
+      const [, MM, dd, yyyy, hh, mm, ss] = match.map(Number);
+
+      // Проверка диапазонов
+      if (MM < 1 || MM > 12) return false;
+      if (dd < 1 || dd > 31) return false;
+      if (hh < 0 || hh > 23) return false;
+      if (mm < 0 || mm > 59) return false;
+      if (ss < 0 || ss > 59) return false;
+
+      // Проверяем корректность дня в месяце (учитываем високосные годы)
+      const date = new Date(yyyy, MM - 1, dd, hh, mm, ss);
+      return (
+        date.getFullYear() === yyyy &&
+        date.getMonth() === MM - 1 &&
+        date.getDate() === dd &&
+        date.getHours() === hh &&
+        date.getMinutes() === mm &&
+        date.getSeconds() === ss
+      );
+    }
   </script>
 </html>
