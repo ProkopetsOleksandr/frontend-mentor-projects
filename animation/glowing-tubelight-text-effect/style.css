@@ -111,3 +111,19 @@ h2::after {
   transform: translateY(0);
   box-shadow: none;
 }
+
+img {
+  display: block;
+  width: 45%;
+  animation: animateImg 3s ease-in;
+}
+
+@keyframes animateImg {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

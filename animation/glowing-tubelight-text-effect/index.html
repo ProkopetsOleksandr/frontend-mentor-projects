@@ -14,22 +14,29 @@
       </div>
       <div>Format: MM.dd.yyyy hh:mm:ss</div>
     </div>
-    <h2 id="content" contenteditable="true" data-text=""></h2>
+    <div id="timeBlock" style="display: none; flex-direction: column; justify-content: center; align-items: center">
+      <img src="./image.png" alt="" />
+      <div>
+        <h2 id="content" data-text=""></h2>
+      </div>
+    </div>
   </body>
   <script>
+    const timeBlock = document.getElementById('timeBlock');
     const editor = document.getElementById('content');
     const wrapper = document.getElementById('wrapper');
 
     function start() {
       const value = document.getElementById('userInput').value;
 
-      userInput.classList.remove('invalid');
+      userInput.style.border = 'none';
 
       if (isValidDateTime(value)) {
+        timeBlock.style.display = 'flex';
         wrapper.style.display = 'none';
         runInterval(value);
       } else {
-        userInput.classList.add('invalid');
+        userInput.style.border = '1px solid red';
       }
     }
 
